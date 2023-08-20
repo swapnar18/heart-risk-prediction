@@ -31,11 +31,11 @@ single_select_dict = {'Gender' :['Male','Female','Others'],
 with st.form(key='columns_in_form'):
     col1, col2,col3 = st.columns(3)
     with col1:
-        st.text_input('Enter Your Name','Name',key=1) 
+        st.text_input('Enter Your Name',placeholder = 'Name',key=1) 
     with col2:
-        st.text_input('Enter Your Weight in Kgs','1',key=2) 
+        st.text_input('Enter Your Weight in Kgs',placeholder = '1',key=2) 
     with col3:
-        st.text_input('Enter Your Height in cms','10',key=3) 
+        st.text_input('Enter Your Height in cms',placeholder = '10',key=3) 
     cols = st.columns(7)
     for i, col in enumerate(cols):
         col.selectbox(single_select_cols[i], single_select_dict[single_select_cols[i]], key=4+i)
@@ -43,9 +43,9 @@ with st.form(key='columns_in_form'):
     # st.slider(label='Ciggaretes Per Day (if smoking)', min_value=5, max_value=100, key=6)
     col4, col5,col6 = st.columns(3)
     with col4:
-        st.text_input('Ciggaretes Per Day (if smoking)','0',key=12)
+        st.text_input('Ciggaretes Per Day (if smoking)',placeholder = '0',key=12)
     with col5:
-        st.text_input('Total Cholestrol','0',key=13)
+        st.text_input('Total Cholestrol',placeholder = '0',key=13)
     with col6:
-        st.text_input('Heart Rate','0',key=14)
+        st.text_input('Heart Rate',placeholder = '0',key=14)
     submitted = st.form_submit_button('Submit')
