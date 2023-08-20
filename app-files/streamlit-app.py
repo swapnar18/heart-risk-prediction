@@ -114,7 +114,7 @@ def run_prediction():
                            tot_cholestrol,sys_bp,dia_bp,BMI,h_rate,gluc]], columns = xgb.feature_names_in_.tolist())
         prediction = xgb.predict_proba(df)
         predict_proba = xgb.predict_proba(df)
-        if prediction==0:
+        if prediction[0]==0:
             pred_txt = 'dont have'
             predict_prob = predict_proba[0][0]
         else:
