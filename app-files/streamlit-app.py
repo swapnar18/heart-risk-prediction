@@ -77,25 +77,26 @@ def run_prediction():
         cols = st.columns(7)
         cols_dict = {}
         for i, col in enumerate(cols):
-            cols_dict[single_select_cols[i]] = col.selectbox(single_select_cols[i], options = single_select_dict[single_select_cols[i]].keys() ,format_func= lambda x: single_select_dict[single_select_cols[i]][x], key=4+i)
+            cols_dict[single_select_cols[i]] = int(col.selectbox(single_select_cols[i], options = single_select_dict[single_select_cols[i]].keys() ,format_func= lambda x: single_select_dict[single_select_cols[i]][x], key=4+i))
         Age = st.slider(label='Select Age', min_value=5, max_value=100, key=11)
         # st.slider(label='Ciggaretes Per Day (if smoking)', min_value=5, max_value=100, key=6)
         col4, col5,col6 = st.columns(3)
         with col4:
-            ciggs_per_day = st.text_input('Ciggaretes Per Day (if smoking)','0',key=12)
+            ciggs_per_day = int(st.text_input('Ciggaretes Per Day (if smoking)','0',key=12))
         with col5:
-            tot_cholestrol = st.text_input('Total Cholestrol','0',key=13)
+            tot_cholestrol = int(st.text_input('Total Cholestrol','0',key=13))
         with col6:
-            h_rate = st.text_input('Heart Rate','0',key=14)
+            h_rate = int(st.text_input('Heart Rate','0',key=14))
         col7, col8 = st.columns(2)
         with col7:
-            sys_bp = st.slider(label='Select Systolic BP', min_value=80, max_value=200, key=15)
+            sys_bp = int(st.slider(label='Select Systolic BP', min_value=80, max_value=200, key=15))
         with col8:
-            dia_bp = st.slider(label='Select Diastolic BP', min_value=20, max_value=140, key=16)
+            dia_bp = int(st.slider(label='Select Diastolic BP', min_value=20, max_value=140, key=16))
         submitted = st.form_submit_button('Submit')
     if submitted:
-        st.write(f'Hello {Name}')
-        st.write(f"Hello {cols_dict['Gender']}")
+        st.write(f'Hello {Name} , Thanks for submitting your health records !!! ')
+        
+        # st.write(f"Hello {cols_dict['Gender']}")
         # st.write(f'Your BMI is : {str(int(int(Weight)/(int(Height/10)**2)))}')
         # st.write(f'Your Weight  is : {Weight}')
         # st.write(f'Your Height  is : {Height}')
@@ -103,6 +104,7 @@ def run_prediction():
         Height = pow(int(Height)/100 , 2)
         # st.write(pow(int(Weight),2))
         BMI = int(Weight/Height)
+        st.write(f'{cols_dict},{ciggs_per_day},{tot_cholestrol},{h_rate},{sys_bp},{dia_bp} ,{BMI}')
         st.write(f'Your BMI is : {str(BMI)}')
 
 if check_password():
