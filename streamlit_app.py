@@ -32,28 +32,30 @@ used_widget_key = st.get_last_used_widget_key()
 with st.form(key='columns_in_form'):
     col1, col2,col3 = st.columns(3)
     with col1:
-        st.text_input('Enter Your Name','Name',key=1) 
+        Name = st.text_input('Enter Your Name','Name',key=1) 
     with col2:
-        st.text_input('Enter Your Weight in Kgs','1',key=2) 
+        Weight  = st.text_input('Enter Your Weight in Kgs','1',key=2) 
     with col3:
-        st.text_input('Enter Your Height in cms','10',key=3) 
+        Height = st.text_input('Enter Your Height in cms','10',key=3) 
     cols = st.columns(7)
+    cols_dict = {}
     for i, col in enumerate(cols):
-        col.selectbox(single_select_cols[i], single_select_dict[single_select_cols[i]], key=4+i)
-    st.slider(label='Select Age', min_value=5, max_value=100, key=11)
+        cols_dict[single_select_cols[i]] = col.selectbox(single_select_cols[i], single_select_dict[single_select_cols[i]], key=4+i)
+    Age = st.slider(label='Select Age', min_value=5, max_value=100, key=11)
     # st.slider(label='Ciggaretes Per Day (if smoking)', min_value=5, max_value=100, key=6)
     col4, col5,col6 = st.columns(3)
     with col4:
-        st.text_input('Ciggaretes Per Day (if smoking)','0',key=12)
+        ciggs_per_day = st.text_input('Ciggaretes Per Day (if smoking)','0',key=12)
     with col5:
-        st.text_input('Total Cholestrol','0',key=13)
+        tot_cholestrol = st.text_input('Total Cholestrol','0',key=13)
     with col6:
-        st.text_input('Heart Rate','0',key=14)
+        h_rate = st.text_input('Heart Rate','0',key=14)
     col7, col8 = st.columns(2)
     with col7:
-        st.slider(label='Select Systolic BP', min_value=80, max_value=200, key=15)
+        sys_bp = st.slider(label='Select Systolic BP', min_value=80, max_value=200, key=15)
     with col8:
-        st.slider(label='Select Diastolic BP', min_value=20, max_value=140, key=16)
+        dia_bp = st.slider(label='Select Diastolic BP', min_value=20, max_value=140, key=16)
     submitted = st.form_submit_button('Submit')
 if submit:
-    st.write(f'Hello {used_widget_key[1]}')
+    st.write(f'Hello {Name}')
+    st.write(f'Your BMI is : {int(Weight}/(int(Height/10)**2)')
