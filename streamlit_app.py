@@ -56,6 +56,6 @@ with st.form(key='columns_in_form'):
     with col8:
         dia_bp = st.slider(label='Select Diastolic BP', min_value=20, max_value=140, key=16)
     submitted = st.form_submit_button('Submit')
-if submit:
+if submitted:
     st.write(f'Hello {Name}')
     st.write(f'Your BMI is : {int(Weight)/(int(Height/10)**2)}')
