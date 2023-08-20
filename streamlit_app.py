@@ -14,6 +14,8 @@ st.markdown("<h1 style='text-align: center; color:#056608;'>Welcome to Heart Ris
 
 # st.write('Hello world!')
 # st.title("Welcome to Heart Risk Prediction App Using Machine Learning", anchor=None, *, help=None)
+st.caption('Please enter your health details below to get your personalized heart risk probability')
+st.caption('A caption with _italics_ :blue[colors] and emojis :sunglasses:')
 
 with st.form(key='columns_in_form'):
     cols = st.columns(5)
