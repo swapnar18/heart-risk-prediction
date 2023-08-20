@@ -28,7 +28,7 @@ single_select_dict = {'Gender' :['Male','Female','Others'],
                       'Any Prevalent Stroke' : ['Yes','No'],
                       'Any Prevalent Hypertension' : ['Yes','No'],
                       'Any Diabetes' : ['Yes','No']}
-used_widget_key = st.get_last_used_widget_key()
+# used_widget_key = st.get_last_used_widget_key()
 with st.form(key='columns_in_form'):
     col1, col2,col3 = st.columns(3)
     with col1:
