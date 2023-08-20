@@ -120,7 +120,7 @@ def run_prediction():
         else:
             pred_txt = 'will have'
             predict_prob = np.round(predict_proba[0][1]*100 , 2)
-        st.write(f'{prediction},{predict_proba}')
+        # st.write(f'{prediction},{predict_proba}')
         st.write(f'You {pred_txt} Heart Risk in next 10 years with probaility of {predict_prob} %')
 
 if check_password():
