@@ -104,9 +104,9 @@ def run_prediction():
         Height = pow(int(Height)/100 , 2)
         # st.write(pow(int(Weight),2))
         BMI = int(Weight/Height)
-        cols_dict['Gender'] = 0 if cols_dict['Gender']<1 else 1
-        cols_dict['Gender'] = 1 if cols_dict['Education']==5 else cols_dict['Education']
-        st.write(f'{cols_dict},{Age},{ciggs_per_day},{tot_cholestrol},{h_rate},{sys_bp},{dia_bp} ,{BMI}')
+        gender = 0 if cols_dict['Gender']<1 else 1
+        education = 1 if cols_dict['Education']==5 else cols_dict['Education']
+        st.write(f'{gender},{education},{cols_dict},{Age},{ciggs_per_day},{tot_cholestrol},{h_rate},{sys_bp},{dia_bp} ,{BMI}')
         st.write(f'Your BMI is : {str(BMI)}')
 
 if check_password():
