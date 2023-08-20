@@ -1,5 +1,34 @@
 import streamlit as st
 import joblib
+
+def check_password():
+    """Returns `True` if the user had the correct password."""
+   
+    def password_entered():
+        """Checks whether a password entered by the user is correct."""
+        if st.session_state["password"] == 'spring':
+            st.session_state["password_correct"] = True
+            del st.session_state["password"]  # don't store password
+        else:
+            st.session_state["password_correct"] = False
+
+    if "password_correct" not in st.session_state:
+        # First run, show input for password.
+        st.text_input(
+            "Password", type="password", on_change=password_entered, key="password"
+        )
+        return False
+    elif not st.session_state["password_correct"]:
+        # Password not correct, show input + error.
+        st.text_input(
+            "Password", type="password", on_change=password_entered, key="password"
+        )
+        st.error("😕 Password incorrect")
+        return False
+    else:
+        # Password correct.
+        return True
+
 file_name = "xgb_reg.pkl"
 # joblib.dump(xg_clf, file_name) 
 xgb = joblib.load(file_name)
@@ -61,13 +90,17 @@ with st.form(key='columns_in_form'):
     with col8:
         dia_bp = st.slider(label='Select Diastolic BP', min_value=20, max_value=140, key=16)
     submitted = st.form_submit_button('Submit')
-if submitted:
-    st.write(f'Hello {Name}')
-    # st.write(f'Your BMI is : {str(int(int(Weight)/(int(Height/10)**2)))}')
-    # st.write(f'Your Weight  is : {Weight}')
-    # st.write(f'Your Height  is : {Height}')
-    Weight = int(Weight)
-    Height = pow(int(Height)/100 , 2)
-    # st.write(pow(int(Weight),2))
-    BMI = int(Weight/Height)
-    st.write(f'Your BMI is : {str(BMI)}')
+def run_prediction():
+    if submitted:
+        st.write(f'Hello {Name}')
+        # st.write(f'Your BMI is : {str(int(int(Weight)/(int(Height/10)**2)))}')
+        # st.write(f'Your Weight  is : {Weight}')
+        # st.write(f'Your Height  is : {Height}')
+        Weight = int(Weight)
+        Height = pow(int(Height)/100 , 2)
+        # st.write(pow(int(Weight),2))
+        BMI = int(Weight/Height)
+        st.write(f'Your BMI is : {str(BMI)}')
+
+if check_password():
+    run_prediction()
