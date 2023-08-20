@@ -21,7 +21,7 @@ st.caption('Please enter your health details below to get your personalized hear
 columns = ['Gender', 'age', 'education', 'currentSmoker', 'cigsPerDay', 'BPMeds','prevalentStroke', 'prevalentHyp', 'diabetes', 'totChol', 'sysBP',\
            'diaBP', 'BMI', 'heartRate', 'glucose']
 single_select_cols= ['Gender','Education','Habitual Smoking' ,'BP Medication' , 'Any Prevalent Stroke','Any Prevalent Hypertension']
-single_select_dict = {'Gender' :['Yes','No'],
+single_select_dict = {'Gender' :['Male','Female','Others'],
                       'Education' : ['Primary','Secondary','Graduate','Post Grad','Others'],
                       'Habitual Smoking' : ['Yes','No'],
                       'BP Medication' : ['Yes','No'],
