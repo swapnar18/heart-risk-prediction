@@ -58,4 +58,4 @@ with st.form(key='columns_in_form'):
     submitted = st.form_submit_button('Submit')
 if submit:
     st.write(f'Hello {Name}')
-    st.write(f'Your BMI is : {int(Weight}/(int(Height/10)**2)')
+    st.write(f'Your BMI is : {int(Weight)/(int(Height/10)**2)}')
