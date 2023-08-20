@@ -110,8 +110,8 @@ def run_prediction():
         BMI = int(Weight/Height)
         gender = 0 if cols_dict['Gender']==2 else 1
         education = 1 if cols_dict['Education']==5 else cols_dict['Education']
-        df = pd.DataFrame([gender,Age,education,cols_dict['Habitual Smoking'],ciggs_per_day,cols_dict['BP Medication'],cols_dict['Any Prevalent Stroke'],cols_dict['Any Prevalent Hypertension'],cols_dict['Any Diabetes'],\
-                           tot_cholestrol,sys_bp,dia_bp,BMI,h_rate,gluc], columns = xgb.feature_names_in_.tolist())
+        df = pd.DataFrame([[gender,Age,education,cols_dict['Habitual Smoking'],ciggs_per_day,cols_dict['BP Medication'],cols_dict['Any Prevalent Stroke'],cols_dict['Any Prevalent Hypertension'],cols_dict['Any Diabetes'],\
+                           tot_cholestrol,sys_bp,dia_bp,BMI,h_rate,gluc]], columns = xgb.feature_names_in_.tolist())
         prediction = xgb.predict_proba(df)
         predict_proba = xgb.predict_proba(df)
         if prediction==0:
