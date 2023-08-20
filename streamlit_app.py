@@ -10,7 +10,7 @@ import streamlit as st
 # """
 # st.markdown(title_alignment, unsafe_allow_html=True)
 
-st.markdown("<h1 style='text-align: center; color: green;'>Welcome to Heart Risk Prediction App Using Machine Learning</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color:#056608;'>Welcome to Heart Risk Prediction App Using Machine Learning</h1>", unsafe_allow_html=True)
 
 # st.write('Hello world!')
 # st.title("Welcome to Heart Risk Prediction App Using Machine Learning", anchor=None, *, help=None)
