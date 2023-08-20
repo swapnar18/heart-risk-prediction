@@ -62,6 +62,6 @@ if submitted:
     st.write(f'Your Weight  is : {Weight}')
     st.write(f'Your Height  is : {Height}')
     st.write(type(Weight))
-    st.write(type(int(Weight)))
+    st.write(pow(int(Weight),2))
     # BMI = int(int(Weight)/(int(Height/10)**2))
     # st.write(f'Your BMI is : {str(BMI)}')
