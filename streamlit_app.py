@@ -38,7 +38,7 @@ with st.form(key='columns_in_form'):
         st.text_input('Enter Your Height in cms','10',key=3) 
     cols = st.columns(7)
     for i, col in enumerate(cols):
-        col.selectbox(single_select_cols[i], single_select_dict[single_select_cols[i]], key=3+i)
+        col.selectbox(single_select_cols[i], single_select_dict[single_select_cols[i]], key=4+i)
     st.slider(label='Select Age', min_value=5, max_value=100, key=11)
     # st.slider(label='Ciggaretes Per Day (if smoking)', min_value=5, max_value=100, key=6)
     col4, col5,col6 = st.columns(3)
