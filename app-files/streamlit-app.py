@@ -1,5 +1,7 @@
 import streamlit as st
 import joblib
+import pandas as pd
+import numpy as np
 
 def check_password():
     """Returns `True` if the user had the correct password."""
