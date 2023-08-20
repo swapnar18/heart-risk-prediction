@@ -78,7 +78,7 @@ def run_prediction():
         cols_dict = {}
         for i, col in enumerate(cols):
             cols_dict[single_select_cols[i]] = int(col.selectbox(single_select_cols[i], options = single_select_dict[single_select_cols[i]].keys() ,format_func= lambda x: single_select_dict[single_select_cols[i]][x], key=4+i))
-        Age = st.slider(label='Select Age', min_value=5, max_value=100, key=11)
+        Age = int(st.slider(label='Select Age', min_value=5, max_value=100, key=11))
         # st.slider(label='Ciggaretes Per Day (if smoking)', min_value=5, max_value=100, key=6)
         col4, col5,col6 = st.columns(3)
         with col4:
@@ -104,7 +104,7 @@ def run_prediction():
         Height = pow(int(Height)/100 , 2)
         # st.write(pow(int(Weight),2))
         BMI = int(Weight/Height)
-        st.write(f'{cols_dict},{ciggs_per_day},{tot_cholestrol},{h_rate},{sys_bp},{dia_bp} ,{BMI}')
+        st.write(f'{cols_dict},{Age},{ciggs_per_day},{tot_cholestrol},{h_rate},{sys_bp},{dia_bp} ,{BMI}')
         st.write(f'Your BMI is : {str(BMI)}')
 
 if check_password():
