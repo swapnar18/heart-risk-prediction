@@ -56,13 +56,13 @@ def run_prediction():
     columns = ['Gender', 'age', 'education', 'currentSmoker', 'cigsPerDay', 'BPMeds','prevalentStroke', 'prevalentHyp', 'diabetes', 'totChol', 'sysBP',\
                'diaBP', 'BMI', 'heartRate', 'glucose']
     single_select_cols= ['Gender','Education','Habitual Smoking' ,'BP Medication' , 'Any Prevalent Stroke','Any Prevalent Hypertension','Any Diabetes']
-    single_select_dict = {'Gender' :[['Male','Female','Others'],[1,0,0]],
-                          'Education' : [['Primary','Secondary','Graduate','Post Grad','Others'],[1,2,3,4,1]],
-                          'Habitual Smoking' : [['Yes','No'],[1,0]],
-                          'BP Medication' : [['Yes','No'],[1,0]],
-                          'Any Prevalent Stroke' : [['Yes','No'],[1,0]],
-                          'Any Prevalent Hypertension' : [['Yes','No'],[1,0]],
-                          'Any Diabetes' : [['Yes','No'],[1,0]]}
+    single_select_dict = {'Gender' :{'Male':1,'Female':0,'Others':0},
+                          'Education' : {'Primary':1,'Secondary':2,'Graduate':3,'Post Grad':4,'Others':1},
+                          'Habitual Smoking' : {'Yes':1,'No':0},
+                          'BP Medication' : {'Yes':1,'No':0},
+                          'Any Prevalent Stroke' : {'Yes':1,'No':0},
+                          'Any Prevalent Hypertension' : {'Yes':1,'No':0},
+                          'Any Diabetes' : {'Yes':1,'No':0}}
     # used_widget_key = st.get_last_used_widget_key()
     def format_func(key,option):
         return single_select_dict[key][0]
@@ -77,7 +77,7 @@ def run_prediction():
         cols = st.columns(7)
         cols_dict = {}
         for i, col in enumerate(cols):
-            cols_dict[single_select_cols[i]] = col.selectbox(single_select_cols[i], single_select_dict[single_select_cols[i]][1] ,format_func= format_func(single_select_cols[i],option), key=4+i)
+            cols_dict[single_select_cols[i]] = col.selectbox(single_select_cols[i], single_select_dict[single_select_cols[i]].values() ,format_func= lambda x: single_select_dict[single_select_cols[i]].keys(), key=4+i)
         Age = st.slider(label='Select Age', min_value=5, max_value=100, key=11)
         # st.slider(label='Ciggaretes Per Day (if smoking)', min_value=5, max_value=100, key=6)
         col4, col5,col6 = st.columns(3)
