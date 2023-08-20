@@ -33,7 +33,7 @@ with st.form(key='columns_in_form'):
         col.selectbox(single_select_cols[i], single_select_dict[single_select_cols[i]], key=i)
     st.slider(label='Select Age', min_value=5, max_value=100, key=6)
     # st.slider(label='Ciggaretes Per Day (if smoking)', min_value=5, max_value=100, key=6)
-    col1, col2 = st.columns(2)
+    col1, col2 ,col3 = st.columns(3)
     with col1:
         st.text_input('Ciggaretes Per Day (if smoking)','0',key=7)
     submitted = st.form_submit_button('Submit')
