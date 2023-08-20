@@ -93,6 +93,7 @@ def run_prediction():
         submitted = st.form_submit_button('Submit')
     if submitted:
         st.write(f'Hello {Name}')
+        st.write(f'Hello {cols_dict['Gender']}')
         # st.write(f'Your BMI is : {str(int(int(Weight)/(int(Height/10)**2)))}')
         # st.write(f'Your Weight  is : {Weight}')
         # st.write(f'Your Height  is : {Height}')
