@@ -80,13 +80,15 @@ def run_prediction():
             cols_dict[single_select_cols[i]] = int(col.selectbox(single_select_cols[i], options = single_select_dict[single_select_cols[i]].keys() ,format_func= lambda x: single_select_dict[single_select_cols[i]][x], key=4+i))
         Age = int(st.slider(label='Select Age', min_value=5, max_value=100, key=11))
         # st.slider(label='Ciggaretes Per Day (if smoking)', min_value=5, max_value=100, key=6)
-        col4, col5,col6 = st.columns(3)
+        col4, col5,col6,col9 = st.columns(4)
         with col4:
             ciggs_per_day = int(st.text_input('Ciggaretes Per Day (if smoking)','0',key=12))
         with col5:
             tot_cholestrol = int(st.text_input('Total Cholestrol','0',key=13))
         with col6:
             h_rate = int(st.text_input('Heart Rate','0',key=14))
+        with col9:
+            gluc = int(st.text_input('Glucose','10',key=17))
         col7, col8 = st.columns(2)
         with col7:
             sys_bp = int(st.slider(label='Select Systolic BP', min_value=80, max_value=200, key=15))
@@ -106,8 +108,18 @@ def run_prediction():
         BMI = int(Weight/Height)
         gender = 0 if cols_dict['Gender']==2 else 1
         education = 1 if cols_dict['Education']==5 else cols_dict['Education']
+        df = pd.DataFrame([gender,Age,education,cols_dict['Habitual Smoking'],ciggs_per_day,cols_dict['BP Medication'],cols_dict['Any Prevalent Stroke'],cols_dict['Any Prevalent Hypertension'],cols_dict['Any Diabetes'],\
+                           tot_cholestrol,sys_bp,dia_bp,BMI,h_rate,gluc], columns = xgb.feature_names_in_.tolist())
+        prediction = xgb.predict_proba(df)
+        predict_proba = xgb.predict_proba(df)
+        if prediction==0:
+            pred_txt = 'dont have'
+            predict_prob = predict_proba[0][0]
+        else:
+            pred_txt = 'will have'
+            predict_prob = predict_proba[0][1]
         st.write(f'{gender},{education},{cols_dict},{Age},{ciggs_per_day},{tot_cholestrol},{h_rate},{sys_bp},{dia_bp} ,{BMI}')
-        st.write(f'Your BMI is : {str(BMI)}')
+        st.write(f'You {pred_txt} Heart Risk in next 10 years with probaility of {predict_prob}')
 
 if check_password():
     run_prediction()
