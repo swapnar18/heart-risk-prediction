@@ -1,7 +1,7 @@
 import streamlit as st
 import joblib
 file_name = "xgb_reg.pkl"
-joblib.dump(xg_clf, file_name) 
+# joblib.dump(xg_clf, file_name) 
 xgb = joblib.load(file_name)
 
 st.set_page_config(layout="wide")
