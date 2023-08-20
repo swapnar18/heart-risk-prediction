@@ -116,12 +116,12 @@ def run_prediction():
         predict_proba = xgb.predict_proba(df)
         if prediction[0]==0:
             pred_txt = 'dont have'
-            predict_prob = predict_proba[0][0]
+            predict_prob = np.round(predict_proba[0][0]*100 , 2)
         else:
             pred_txt = 'will have'
             predict_prob = predict_proba[0][1]
         st.write(f'{gender},{education},{cols_dict},{Age},{ciggs_per_day},{tot_cholestrol},{h_rate},{sys_bp},{dia_bp} ,{BMI}')
-        st.write(f'You {pred_txt} Heart Risk in next 10 years with probaility of {predict_prob}')
+        st.write(f'You {pred_txt} Heart Risk in next 10 years with probaility of {predict_prob} %')
 
 if check_password():
     run_prediction()
