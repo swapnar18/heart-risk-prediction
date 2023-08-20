@@ -33,9 +33,9 @@ with st.form(key='columns_in_form'):
     with col1:
         st.text_input('Enter Your Name',placeholder = 'Name',key=1) 
     with col2:
-        st.text_input('Enter Your Weight in Kgs',placeholder = '1',key=2) 
+        st.text_input('Enter Your Weight in Kgs',placeholder = 'Weight',key=2) 
     with col3:
-        st.text_input('Enter Your Height in cms',placeholder = '10',key=3) 
+        st.text_input('Enter Your Height in cms',placeholder = 'Height',key=3) 
     cols = st.columns(7)
     for i, col in enumerate(cols):
         col.selectbox(single_select_cols[i], single_select_dict[single_select_cols[i]], key=4+i)
